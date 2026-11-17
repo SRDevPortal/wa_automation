@@ -1,0 +1,49 @@
+{
+  "doctype": "Workspace",
+  "name": "WA Automation",
+  "label": "WA Automation",
+  "title": "WA Automation",
+  "module": "WA Automation",
+  "public": 1,
+  "is_hidden": 0,
+  "icon": "message",
+  "content": "[{\"id\": \"wa-title\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">WA Automation</span>\", \"col\": 12}}, {\"id\": \"wa-0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Campaigns\", \"col\": 3}}, {\"id\": \"wa-1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Run History\", \"col\": 3}}, {\"id\": \"wa-2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Recipients\", \"col\": 3}}, {\"id\": \"wa-3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Settings\", \"col\": 3}}]",
+  "shortcuts": [
+    {
+      "label": "Campaigns",
+      "type": "DocType",
+      "link_to": "WA Campaign",
+      "doc_view": "List"
+    },
+    {
+      "label": "Run History",
+      "type": "DocType",
+      "link_to": "WA Campaign Run",
+      "doc_view": "List"
+    },
+    {
+      "label": "Recipients",
+      "type": "DocType",
+      "link_to": "WA Campaign Recipient",
+      "doc_view": "List"
+    },
+    {
+      "label": "Settings",
+      "type": "DocType",
+      "link_to": "WA Automation Settings",
+      "doc_view": ""
+    }
+  ],
+  "links": [],
+  "roles": [
+    {
+      "role": "WA Automation User"
+    },
+    {
+      "role": "WA Automation Manager"
+    },
+    {
+      "role": "System Manager"
+    }
+  ]
+}
