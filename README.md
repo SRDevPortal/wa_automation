@@ -18,6 +18,10 @@ Open a run to use **Cancel Run** or **Retry Run**. Cancel removes waiting queue 
 
 ## Install
 
+WA Chat Hub must be available in this bench and installed on the target site. If it is not already available, fetch `SRDevPortal/wa_chat_hub` using your GitHub access, then run `bench --site your-site install-app wa_chat_hub` before installing WA Automation.
+
+The dependency is declared as `SRDevPortal/wa_chat_hub` so Frappe can resolve its app name without searching the public `frappe` and `erpnext` GitHub organizations. This also supports Frappe versions that resolve dependency repositories before checking installed apps. An existing WA Chat Hub installation is reused.
+
 ```sh
 bench get-app /path/to/wa_automation
 bench --site your-site install-app wa_automation

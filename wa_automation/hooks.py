@@ -4,7 +4,8 @@ app_publisher = "SRIAAS"
 app_description = "Bulk WhatsApp campaigns with dynamic audiences and weekly schedules"
 app_email = "webdevelopersriaas@gmail.com"
 app_license = "mit"
-required_apps = ["wa_chat_hub"]
+# Qualify the repository so Frappe does not guess frappe/ or erpnext/ on GitHub.
+required_apps = ["SRDevPortal/wa_chat_hub"]
 app_include_js = ["/assets/wa_automation/js/campaign_time.js?v=20261104.1"]
 before_install = "wa_automation.install.before_install"
 after_install = "wa_automation.install.after_install"
