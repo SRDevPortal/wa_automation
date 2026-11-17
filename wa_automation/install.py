@@ -21,10 +21,20 @@ def after_migrate():
         frappe.db.add_index("WA Campaign Recipient", ["run", "status"], "wa_run_status")
         frappe.db.add_index("WA Campaign Recipient", ["campaign", "phone", "status"], "wa_campaign_phone")
         frappe.db.add_index("WA Campaign Run", ["campaign", "status"], "wa_campaign_status")
-        settings = frappe.get_single("WA Automation Settings")
-        if not frappe.db.exists("Singles", {"doctype": "WA Automation Settings", "field": "max_recipients"}):
-            settings.update(dict(sending_enabled=1, max_recipients=10000, messages_per_minute=60, max_attempts=3, schedule_grace_minutes=15))
-            settings.save(ignore_permissions=True)
+        _ensure_settings_defaults()
+
+
+def _ensure_settings_defaults():
+    doctype = "WA Automation Settings"
+    # Singles has no document name column. Read its stored fields directly and
+    # lock them while initializing, since the scheduler also writes a heartbeat.
+    stored = frappe.db.get_singles_dict(doctype, for_update=True)
+    defaults = dict(sending_enabled=1, max_recipients=10000, messages_per_minute=60,
+                    max_attempts=3, schedule_grace_minutes=15)
+    missing = {field: value for field, value in defaults.items() if field not in stored}
+    if missing:
+        # Update only missing fields, preserving saved settings and the heartbeat.
+        frappe.db.set_single_value(doctype, missing)
 
 
 def sync_app():
