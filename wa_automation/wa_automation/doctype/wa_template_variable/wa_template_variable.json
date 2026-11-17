@@ -1,0 +1,75 @@
+{
+  "doctype": "DocType",
+  "name": "WA Template Variable",
+  "module": "WA Automation",
+  "engine": "InnoDB",
+  "custom": 0,
+  "istable": 1,
+  "editable_grid": 1,
+  "issingle": 0,
+  "track_changes": 0,
+  "fields": [
+    {
+      "fieldname": "component",
+      "fieldtype": "Select",
+      "label": "Component",
+      "columns": 2,
+      "options": "Body\nHeader\nButton",
+      "default": "Body",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "position",
+      "fieldtype": "Int",
+      "label": "Position",
+      "columns": 1,
+      "default": 1,
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "source_type",
+      "fieldtype": "Select",
+      "label": "Source Type",
+      "columns": 2,
+      "options": "Field\nFixed",
+      "default": "Field",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "field_name",
+      "fieldtype": "Data",
+      "label": "Field Name",
+      "columns": 2,
+      "depends_on": "eval:doc.source_type == 'Field'",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "fixed_value",
+      "fieldtype": "Small Text",
+      "label": "Fixed Value",
+      "columns": 3,
+      "in_list_view": 1,
+      "description": "Text to send to every recipient when Source Type is Fixed.",
+      "depends_on": "eval:doc.source_type == 'Fixed'"
+    },
+    {
+      "fieldname": "fallback_value",
+      "fieldtype": "Small Text",
+      "label": "Fallback Value"
+    }
+  ],
+  "field_order": [
+    "component",
+    "position",
+    "source_type",
+    "field_name",
+    "fixed_value",
+    "fallback_value"
+  ],
+  "permissions": [],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

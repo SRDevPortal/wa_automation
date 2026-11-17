@@ -1,0 +1,191 @@
+{
+  "doctype": "DocType",
+  "name": "WA Campaign Recipient",
+  "module": "WA Automation",
+  "engine": "InnoDB",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "track_changes": 1,
+  "fields": [
+    {
+      "fieldname": "campaign",
+      "fieldtype": "Link",
+      "label": "Campaign",
+      "options": "WA Campaign",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "run",
+      "fieldtype": "Link",
+      "label": "Run",
+      "options": "WA Campaign Run",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "is_test",
+      "fieldtype": "Check",
+      "label": "Test send",
+      "default": 0
+    },
+    {
+      "fieldname": "reference_doctype",
+      "fieldtype": "Link",
+      "label": "Reference Doctype",
+      "options": "DocType"
+    },
+    {
+      "fieldname": "reference_name",
+      "fieldtype": "Dynamic Link",
+      "label": "Reference Name",
+      "options": "reference_doctype",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "recipient_key",
+      "fieldtype": "Data",
+      "label": "Recipient Key",
+      "unique": 1
+    },
+    {
+      "fieldname": "phone",
+      "fieldtype": "Data",
+      "label": "Phone",
+      "permlevel": 1,
+      "search_index": 1
+    },
+    {
+      "fieldname": "masked_phone",
+      "fieldtype": "Data",
+      "label": "Masked Phone",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Pending\nSending\nRetry\nUnknown\nAccepted\nSent\nDelivered\nRead\nFailed\nSkipped",
+      "default": "Pending",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "payload_json",
+      "fieldtype": "Code",
+      "label": "Payload Json",
+      "options": "JSON",
+      "permlevel": 1
+    },
+    {
+      "fieldname": "preview",
+      "fieldtype": "Small Text",
+      "label": "Preview",
+      "permlevel": 1
+    },
+    {
+      "fieldname": "provider_message_id",
+      "fieldtype": "Data",
+      "label": "Provider Message Id",
+      "search_index": 1
+    },
+    {
+      "fieldname": "chat_message",
+      "fieldtype": "Link",
+      "label": "Chat Message",
+      "options": "Chat Message"
+    },
+    {
+      "fieldname": "attempts",
+      "fieldtype": "Int",
+      "label": "Attempts"
+    },
+    {
+      "fieldname": "next_attempt_at",
+      "fieldtype": "Datetime",
+      "label": "Next attempt (IST)"
+    },
+    {
+      "fieldname": "dispatch_started_at",
+      "fieldtype": "Datetime",
+      "label": "Dispatch started (IST)"
+    },
+    {
+      "fieldname": "accepted_at",
+      "fieldtype": "Datetime",
+      "label": "Accepted at (IST)"
+    },
+    {
+      "fieldname": "last_error",
+      "fieldtype": "Small Text",
+      "label": "Last Error"
+    },
+    {
+      "fieldname": "history_error",
+      "fieldtype": "Small Text",
+      "label": "History Error"
+    }
+  ],
+  "field_order": [
+    "campaign",
+    "run",
+    "is_test",
+    "reference_doctype",
+    "reference_name",
+    "recipient_key",
+    "phone",
+    "masked_phone",
+    "status",
+    "payload_json",
+    "preview",
+    "provider_message_id",
+    "chat_message",
+    "attempts",
+    "next_attempt_at",
+    "dispatch_started_at",
+    "accepted_at",
+    "last_error",
+    "history_error"
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 0,
+      "create": 0,
+      "delete": 0,
+      "report": 1,
+      "export": 0
+    },
+    {
+      "role": "WA Automation Manager",
+      "read": 1,
+      "write": 0,
+      "create": 0,
+      "delete": 0,
+      "report": 1,
+      "export": 0
+    },
+    {
+      "role": "WA Automation User",
+      "read": 1,
+      "write": 0,
+      "create": 0,
+      "report": 1
+    },
+    {
+      "role": "System Manager",
+      "permlevel": 1,
+      "read": 1,
+      "write": 1
+    },
+    {
+      "role": "WA Automation Manager",
+      "permlevel": 1,
+      "read": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "autoname": "hash",
+  "title_field": null
+}

@@ -1,0 +1,93 @@
+{
+  "doctype": "DocType",
+  "name": "WA Automation Settings",
+  "module": "WA Automation",
+  "engine": "InnoDB",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 1,
+  "track_changes": 1,
+  "fields": [
+    {
+      "fieldname": "sending_enabled",
+      "fieldtype": "Check",
+      "label": "Sending Enabled",
+      "default": 1
+    },
+    {
+      "fieldname": "max_recipients",
+      "fieldtype": "Int",
+      "label": "Max Recipients",
+      "default": 10000,
+      "description": "Runs exceeding this many matching records fail before any messages are sent."
+    },
+    {
+      "fieldname": "messages_per_minute",
+      "fieldtype": "Int",
+      "label": "Messages Per Minute",
+      "default": 60,
+      "description": "Shared per-account limit across WA Automation campaigns. Leave headroom for other apps using the same account."
+    },
+    {
+      "fieldname": "max_attempts",
+      "fieldtype": "Int",
+      "label": "Max Attempts",
+      "default": 3
+    },
+    {
+      "fieldname": "schedule_grace_minutes",
+      "fieldtype": "Int",
+      "label": "Schedule Grace Minutes",
+      "default": 15,
+      "description": "Older occurrences are marked missed rather than sent late."
+    },
+    {
+      "fieldname": "scheduler_last_seen",
+      "fieldtype": "Datetime",
+      "label": "Scheduler last checked (IST)",
+      "read_only": 1
+    }
+  ],
+  "field_order": [
+    "sending_enabled",
+    "max_recipients",
+    "messages_per_minute",
+    "max_attempts",
+    "schedule_grace_minutes",
+    "scheduler_last_seen"
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 0,
+      "report": 1,
+      "export": 0
+    },
+    {
+      "role": "WA Automation Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 0,
+      "report": 1,
+      "export": 0
+    },
+    {
+      "role": "System Manager",
+      "permlevel": 1,
+      "read": 1,
+      "write": 1
+    },
+    {
+      "role": "WA Automation Manager",
+      "permlevel": 1,
+      "read": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

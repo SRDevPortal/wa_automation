@@ -1,0 +1,171 @@
+{
+  "doctype": "DocType",
+  "name": "WA Campaign Run",
+  "module": "WA Automation",
+  "engine": "InnoDB",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "track_changes": 1,
+  "fields": [
+    {
+      "fieldname": "campaign",
+      "fieldtype": "Link",
+      "label": "Campaign",
+      "options": "WA Campaign",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Queued\nPreparing\nSending\nCompleted\nFailed\nMissed\nCancelled",
+      "default": "Queued",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "is_test",
+      "fieldtype": "Check",
+      "label": "Test send",
+      "default": 0,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "run_key",
+      "fieldtype": "Data",
+      "label": "Run Key",
+      "unique": 1
+    },
+    {
+      "fieldname": "scheduled_for",
+      "fieldtype": "Datetime",
+      "label": "Scheduled for (IST)",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "snapshot_json",
+      "fieldtype": "Code",
+      "label": "Snapshot Json",
+      "options": "JSON",
+      "permlevel": 1
+    },
+    {
+      "fieldname": "started_at",
+      "fieldtype": "Datetime",
+      "label": "Started at (IST)"
+    },
+    {
+      "fieldname": "finished_at",
+      "fieldtype": "Datetime",
+      "label": "Finished at (IST)"
+    },
+    {
+      "fieldname": "matched",
+      "fieldtype": "Int",
+      "label": "Matched"
+    },
+    {
+      "fieldname": "eligible",
+      "fieldtype": "Int",
+      "label": "Eligible"
+    },
+    {
+      "fieldname": "accepted",
+      "fieldtype": "Int",
+      "label": "Accepted"
+    },
+    {
+      "fieldname": "delivered",
+      "fieldtype": "Int",
+      "label": "Delivered"
+    },
+    {
+      "fieldname": "read_count",
+      "fieldtype": "Int",
+      "label": "Read"
+    },
+    {
+      "fieldname": "failed",
+      "fieldtype": "Int",
+      "label": "Failed"
+    },
+    {
+      "fieldname": "skipped",
+      "fieldtype": "Int",
+      "label": "Skipped"
+    },
+    {
+      "fieldname": "unknown",
+      "fieldtype": "Int",
+      "label": "Unknown"
+    },
+    {
+      "fieldname": "error",
+      "fieldtype": "Small Text",
+      "label": "Error"
+    }
+  ],
+  "field_order": [
+    "campaign",
+    "status",
+    "is_test",
+    "run_key",
+    "scheduled_for",
+    "snapshot_json",
+    "started_at",
+    "finished_at",
+    "matched",
+    "eligible",
+    "accepted",
+    "delivered",
+    "read_count",
+    "failed",
+    "skipped",
+    "unknown",
+    "error"
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 0,
+      "create": 0,
+      "delete": 0,
+      "report": 1,
+      "export": 0
+    },
+    {
+      "role": "WA Automation Manager",
+      "read": 1,
+      "write": 0,
+      "create": 0,
+      "delete": 0,
+      "report": 1,
+      "export": 0
+    },
+    {
+      "role": "WA Automation User",
+      "read": 1,
+      "write": 0,
+      "create": 0,
+      "report": 1
+    },
+    {
+      "role": "System Manager",
+      "permlevel": 1,
+      "read": 1,
+      "write": 1
+    },
+    {
+      "role": "WA Automation Manager",
+      "permlevel": 1,
+      "read": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "autoname": "hash",
+  "title_field": null
+}

@@ -1,0 +1,351 @@
+{
+  "doctype": "DocType",
+  "name": "WA Campaign",
+  "module": "WA Automation",
+  "engine": "InnoDB",
+  "custom": 0,
+  "istable": 0,
+  "issingle": 0,
+  "track_changes": 1,
+  "fields": [
+    {
+      "fieldname": "title",
+      "fieldtype": "Data",
+      "label": "Title",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nActive\nPaused\nCompleted",
+      "default": "Draft",
+      "read_only": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "account_section",
+      "fieldtype": "Section Break",
+      "label": "1. Account and template"
+    },
+    {
+      "fieldname": "channel_account",
+      "fieldtype": "Link",
+      "label": "Channel Account",
+      "options": "Chat Channel Account",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "template_picker",
+      "fieldtype": "HTML",
+      "label": "Template Picker"
+    },
+    {
+      "fieldname": "template_name",
+      "fieldtype": "Data",
+      "label": "Template Name",
+      "reqd": 1
+    },
+    {
+      "fieldname": "language_code",
+      "fieldtype": "Data",
+      "label": "Language Code",
+      "default": "en",
+      "reqd": 1
+    },
+    {
+      "fieldname": "template_preview",
+      "fieldtype": "Small Text",
+      "label": "Template Preview",
+      "read_only": 1
+    },
+    {
+      "fieldname": "variables",
+      "fieldtype": "Table",
+      "label": "Variables",
+      "options": "WA Template Variable"
+    },
+    {
+      "fieldname": "header_media_url",
+      "fieldtype": "Data",
+      "label": "Header Media Url",
+      "description": "HTTPS image, video or document URL for templates with media headers."
+    },
+    {
+      "fieldname": "audience_section",
+      "fieldtype": "Section Break",
+      "label": "2. Audience"
+    },
+    {
+      "fieldname": "reference_doctype",
+      "fieldtype": "Select",
+      "label": "Reference Doctype",
+      "options": "Patient\nCRM Lead\nLead",
+      "default": "Patient",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "phone_field",
+      "fieldtype": "Data",
+      "label": "Phone Field",
+      "reqd": 1,
+      "description": "Choose a phone field from the field selector."
+    },
+    {
+      "fieldname": "match_mode",
+      "fieldtype": "Select",
+      "label": "Match Mode",
+      "options": "All\nAny",
+      "default": "All",
+      "reqd": 1
+    },
+    {
+      "fieldname": "filters",
+      "fieldtype": "Table",
+      "label": "Filters",
+      "options": "WA Campaign Filter"
+    },
+    {
+      "fieldname": "sort_field",
+      "fieldtype": "Data",
+      "label": "Sort Field",
+      "default": "creation",
+      "reqd": 1
+    },
+    {
+      "fieldname": "sort_direction",
+      "fieldtype": "Select",
+      "label": "Sort Direction",
+      "options": "asc\ndesc",
+      "default": "desc",
+      "reqd": 1
+    },
+    {
+      "fieldname": "excluded_records",
+      "fieldtype": "Small Text",
+      "label": "Excluded Records",
+      "description": "Optional document IDs to exclude, one per line."
+    },
+    {
+      "fieldname": "consent_section",
+      "fieldtype": "Section Break",
+      "label": "Recipient preferences"
+    },
+    {
+      "fieldname": "consent_confirmed",
+      "fieldtype": "Check",
+      "label": "I confirm this audience has permission to receive these WhatsApp messages",
+      "default": 0
+    },
+    {
+      "fieldname": "repeat_policy",
+      "fieldtype": "Select",
+      "label": "Repeat Policy",
+      "options": "Every matching run\nOnly new recipients",
+      "default": "Every matching run",
+      "reqd": 1
+    },
+    {
+      "fieldname": "minimum_gap_days",
+      "fieldtype": "Int",
+      "label": "Minimum Gap Days",
+      "default": 0
+    },
+    {
+      "fieldname": "preview_section",
+      "fieldtype": "Section Break",
+      "label": "Audience preview"
+    },
+    {
+      "fieldname": "audience_preview",
+      "fieldtype": "HTML",
+      "label": "Audience Preview"
+    },
+    {
+      "fieldname": "schedule_section",
+      "fieldtype": "Section Break",
+      "label": "3. Sending schedule"
+    },
+    {
+      "fieldname": "delivery_mode",
+      "fieldtype": "Select",
+      "label": "Delivery Mode",
+      "options": "Now\nOnce\nWeekly",
+      "default": "Now",
+      "reqd": 1
+    },
+    {
+      "fieldname": "timezone",
+      "fieldtype": "Data",
+      "label": "Timezone",
+      "default": "Asia/Kolkata",
+      "reqd": 1
+    },
+    {
+      "fieldname": "start_date",
+      "fieldtype": "Date",
+      "label": "Start Date",
+      "depends_on": "eval:doc.delivery_mode != 'Now'"
+    },
+    {
+      "fieldname": "end_date",
+      "fieldtype": "Date",
+      "label": "End Date",
+      "depends_on": "eval:doc.delivery_mode == 'Weekly'"
+    },
+    {
+      "fieldname": "send_time",
+      "fieldtype": "Time",
+      "label": "Send Time",
+      "default": "10:00:00",
+      "depends_on": "eval:doc.delivery_mode != 'Now'"
+    },
+    {
+      "fieldname": "monday",
+      "fieldtype": "Check",
+      "label": "Monday",
+      "depends_on": "eval:doc.delivery_mode == 'Weekly'"
+    },
+    {
+      "fieldname": "tuesday",
+      "fieldtype": "Check",
+      "label": "Tuesday",
+      "depends_on": "eval:doc.delivery_mode == 'Weekly'"
+    },
+    {
+      "fieldname": "wednesday",
+      "fieldtype": "Check",
+      "label": "Wednesday",
+      "depends_on": "eval:doc.delivery_mode == 'Weekly'"
+    },
+    {
+      "fieldname": "thursday",
+      "fieldtype": "Check",
+      "label": "Thursday",
+      "depends_on": "eval:doc.delivery_mode == 'Weekly'"
+    },
+    {
+      "fieldname": "friday",
+      "fieldtype": "Check",
+      "label": "Friday",
+      "depends_on": "eval:doc.delivery_mode == 'Weekly'"
+    },
+    {
+      "fieldname": "saturday",
+      "fieldtype": "Check",
+      "label": "Saturday",
+      "depends_on": "eval:doc.delivery_mode == 'Weekly'"
+    },
+    {
+      "fieldname": "sunday",
+      "fieldtype": "Check",
+      "label": "Sunday",
+      "depends_on": "eval:doc.delivery_mode == 'Weekly'"
+    },
+    {
+      "fieldname": "next_run_at",
+      "fieldtype": "Datetime",
+      "label": "Next run (IST)",
+      "read_only": 1
+    },
+    {
+      "fieldname": "schedule_preview",
+      "fieldtype": "HTML",
+      "label": "Schedule Preview"
+    },
+    {
+      "fieldname": "last_error",
+      "fieldtype": "Small Text",
+      "label": "Last Error",
+      "read_only": 1
+    }
+  ],
+  "field_order": [
+    "title",
+    "status",
+    "account_section",
+    "channel_account",
+    "template_picker",
+    "template_name",
+    "language_code",
+    "template_preview",
+    "variables",
+    "header_media_url",
+    "audience_section",
+    "reference_doctype",
+    "phone_field",
+    "match_mode",
+    "filters",
+    "sort_field",
+    "sort_direction",
+    "excluded_records",
+    "consent_section",
+    "consent_confirmed",
+    "repeat_policy",
+    "minimum_gap_days",
+    "preview_section",
+    "audience_preview",
+    "schedule_section",
+    "delivery_mode",
+    "timezone",
+    "start_date",
+    "end_date",
+    "send_time",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday",
+    "next_run_at",
+    "schedule_preview",
+    "last_error"
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 0,
+      "report": 1,
+      "export": 0
+    },
+    {
+      "role": "WA Automation Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 0,
+      "report": 1,
+      "export": 0
+    },
+    {
+      "role": "WA Automation User",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1
+    },
+    {
+      "role": "System Manager",
+      "permlevel": 1,
+      "read": 1,
+      "write": 1
+    },
+    {
+      "role": "WA Automation Manager",
+      "permlevel": 1,
+      "read": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "autoname": "hash",
+  "title_field": "title"
+}

@@ -1,0 +1,19 @@
+[project]
+name = "wa_automation"
+version = "0.1.0"
+description = "Filtered WhatsApp campaigns and recurring schedules for Frappe"
+authors = [{name = "SRIAAS"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["phonenumbers>=8.13,<10"]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<16.0.0"
+
+[tool.ruff]
+line-length = 110
+
